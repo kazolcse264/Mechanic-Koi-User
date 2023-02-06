@@ -130,7 +130,8 @@ class _BookServicePageState extends State<BookServicePage> {
                                 ? [
                                     const DropdownMenuItem<SubcategoryModel>(
                                         value: null,
-                                        child: Text('Please select a Sub category'))
+                                        child: Text(
+                                            'Please select a Sub category'))
                                   ]
                                 : provider.subcategoryList
                                     .where((subcategory) =>
@@ -139,7 +140,14 @@ class _BookServicePageState extends State<BookServicePage> {
                                             catModel!.categoryId)
                                     .map((subCatModel) => DropdownMenuItem(
                                           value: subCatModel,
-                                          child: Text(subCatModel.serviceName),
+                                          child: ListTile(
+                                            title:
+                                                Text(subCatModel.serviceName),
+                                            trailing: Text(
+                                              subCatModel.servicePrice
+                                                  .toString(),
+                                            ),
+                                          ),
                                         ))
                                     .toList(),
                             value: subcategoryModel,
@@ -171,12 +179,15 @@ class _BookServicePageState extends State<BookServicePage> {
                             hint: const Text('Select Employee'),
                             items: provider.employeeModelList
                                 .map((employeeModel) => DropdownMenuItem(
-                              value: employeeModel,
-                              child: ListTile(
-                                title: Text(employeeModel.displayName ?? 'Not Set Yet'),
-                                trailing: Text(employeeModel.designation ?? 'Not Set Yet'),
-                              ),
-                            ))
+                                      value: employeeModel,
+                                      child: ListTile(
+                                        title: Text(employeeModel.displayName ??
+                                            'Not Set Yet'),
+                                        trailing: Text(
+                                            employeeModel.designation ??
+                                                'Not Set Yet'),
+                                      ),
+                                    ))
                                 .toList(),
                             value: employeeModel,
                             validator: (value) {
@@ -298,7 +309,6 @@ class _BookServicePageState extends State<BookServicePage> {
             otherProblem: _problemController.text,
             pickUpAddress: _picUpAddressController.text,
             dropAddress: _dropAddressController.text,
-
           );
           await serviceProvider.addNewService(bookServiceModel, userModel);
         }

@@ -28,6 +28,7 @@ class _HomePageState extends State<HomePage> {
     Provider.of<ServiceProvider>(context, listen: false).getAllSubCategories();
     Provider.of<ServiceProvider>(context, listen: false).getAllOrders();
     Provider.of<ServiceProvider>(context, listen: false).getAllEmployees();
+    Provider.of<ServiceProvider>(context, listen: false).getAllOffers();
     super.didChangeDependencies();
   }
 
@@ -53,13 +54,6 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
         actions: [
-          InkWell(
-            onTap: () {
-              Navigator.pushReplacementNamed(
-                  context, BottomNavBarPageWrapper.routeName);
-            },
-            child: const Icon(Icons.notifications),
-          ),
           InkWell(
             onTap: () {
               Navigator.pushNamed(context, ProfilePage.routeName);
@@ -166,18 +160,18 @@ class _HomePageState extends State<HomePage> {
                             ),
                             Row(
                               mainAxisSize: MainAxisSize.min,
-                              children: const [
-                                Icon(
+                              children:  [
+                                const Icon(
                                   Icons.card_giftcard,
                                   color: Colors.lightBlue,
                                   size: 30,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 10,
                                 ),
                                 Text(
-                                  '',
-                                  style: TextStyle(
+                                  serviceProvider.offerModelList.length.toString(),
+                                  style: const TextStyle(
                                       fontSize: 30, color: Colors.lightBlue),
                                 ),
                               ],

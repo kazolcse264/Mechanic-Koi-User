@@ -2,13 +2,15 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:mechanic_koi/pages/Login/login_screen.dart';
+import 'package:mechanic_koi/pages/Others/how_it_work.dart';
+import 'package:mechanic_koi/pages/Others/privacy_policy.dart';
 import 'package:mechanic_koi/pages/Signup/signup_screen.dart';
 import 'package:mechanic_koi/pages/Welcome/welcome_screen.dart';
 import 'package:mechanic_koi/pages/book_service_page.dart';
-import 'package:mechanic_koi/pages/bottom_nav_bar_page.dart';
 import 'package:mechanic_koi/pages/contact_us.dart';
 import 'package:mechanic_koi/pages/home_page.dart';
 import 'package:mechanic_koi/pages/launcher_page.dart';
+import 'package:mechanic_koi/pages/offer_details_page.dart';
 import 'package:mechanic_koi/pages/offer_list_page.dart';
 import 'package:mechanic_koi/pages/order_list_page.dart';
 import 'package:mechanic_koi/pages/profile_page.dart';
@@ -87,8 +89,11 @@ class MyApp extends StatelessWidget {
         SignUpScreen.routeName : (context) => const SignUpScreen(),
         BookServicePage.routeName : (context) => const BookServicePage(),
         OfferListPage.routeName : (context) => const OfferListPage(),
+        OfferDetailsPage.routeName : (context) => const OfferDetailsPage(),
         ContactUsPage.routeName : (context) => const ContactUsPage(),
         TotalExpensesPage.routeName : (context) =>  const TotalExpensesPage(),
+        PrivacyPolicyPage.routeName : (context) =>  const PrivacyPolicyPage(),
+        HowItWorkPage.routeName : (context) =>  const HowItWorkPage(),
       },
     );
   }

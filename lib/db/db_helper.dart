@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:mechanic_koi/models/book_service_model.dart';
 import '../models/category_model.dart';
 import '../models/employee_model.dart';
+import '../models/offer_model.dart';
 import '../models/subcategory_model.dart';
 import '../models/user_model.dart';
 
@@ -75,5 +76,15 @@ class DbHelper {
   static Stream<QuerySnapshot<Map<String, dynamic>>> getAllEmployees() {
     final collectionRef =  _db.collection(collectionEmployees);
     return collectionRef.snapshots();
+  }
+
+  static Stream<QuerySnapshot<Map<String, dynamic>>> getAllOffers() {
+    final collectionRef = _db.collection(collectionOffers);
+    return collectionRef.snapshots();
+  }
+
+  static Future<void> updateUserProfileField(
+      String uid, Map<String, dynamic> map) {
+    return _db.collection(collectionUsers).doc(uid).update(map);
   }
 }

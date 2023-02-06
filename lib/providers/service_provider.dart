@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:mechanic_koi/models/book_service_model.dart';
 import 'package:mechanic_koi/models/employee_model.dart';
-import 'package:mechanic_koi/models/notification_model.dart';
 import 'package:mechanic_koi/models/user_model.dart';
 
 import '../db/db_helper.dart';
 import '../models/category_model.dart';
+import '../models/offer_model.dart';
 import '../models/subcategory_model.dart';
 
 class ServiceProvider extends ChangeNotifier {
@@ -14,6 +14,7 @@ class ServiceProvider extends ChangeNotifier {
   List<SubcategoryModel> subcategoryList = [];
   List<BookServiceModel> bookServiceList = [];
   List<EmployeeModel> employeeModelList = [];
+  List<OfferModel> offerModelList = [];
 
 
   Future<void> addCategory(
@@ -50,6 +51,17 @@ class ServiceProvider extends ChangeNotifier {
               (index) => EmployeeModel.fromMap(snapshot.docs[index].data()));
       notifyListeners();
     });
+  }
+
+  getAllOffers() {
+    DbHelper.getAllOffers().listen((snapshot) {
+      offerModelList = List.generate(snapshot.docs.length,
+              (index) => OfferModel.fromMap(snapshot.docs[index].data()));
+      notifyListeners();
+    });
+  }
+  OfferModel getOfferById(String id) {
+    return offerModelList.firstWhere((element) => element.offerId == id);
   }
   Future<void> updateProductField(
       String productId, String field, dynamic value) {

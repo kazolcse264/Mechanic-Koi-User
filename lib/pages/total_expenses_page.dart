@@ -12,7 +12,6 @@ class TotalExpensesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final totalExpense = ModalRoute.of(context)!.settings.arguments;
-    print(totalExpense.runtimeType);
     return Scaffold(
       appBar: AppBar(title: const Text('Total Expenses Page'),),
       body: Consumer<ServiceProvider>(
@@ -40,12 +39,12 @@ class TotalExpensesPage extends StatelessWidget {
                 },
               ),
             ),
-            Container(
+            SizedBox(
               width: double.infinity,
               height: 70,
               child: Card(
                 color: kPrimaryColor,
-                child: Center(child: Text('Total Expenses :  ${totalExpense.toString()} $currencySymbol',style: TextStyle(fontSize: 25,color: Colors.white),)),
+                child: Center(child: (totalExpense == null) ? const Text(''):Text('Total Expenses :  ${totalExpense.toString()} $currencySymbol',style: const TextStyle(fontSize: 25,color: Colors.white),)),
               ),
             )
 
