@@ -22,6 +22,7 @@ class _ProfilePageState extends State<ProfilePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('My Profile'),
+        centerTitle: true,
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -134,9 +135,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     ListTile(
                       title: const Text('Age'),
-                      trailing: Text(
-                          userProvider.userModel!.age.toString() ??
-                              'Not Set Yet'),
+                      trailing:(userProvider.userModel!.age == null ) ? const Text('Not Set Yet') : Text(
+                          userProvider.userModel!.age.toString(),),
                     ),
                     ListTile(
                       title: const Text('Gender'),

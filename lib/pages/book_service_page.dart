@@ -13,8 +13,6 @@ import 'package:provider/provider.dart';
 import '../models/category_model.dart';
 
 import '../models/date_model.dart';
-import '../models/notification_model.dart';
-import '../utils/constants.dart';
 import '../utils/helper_functions.dart';
 
 class BookServicePage extends StatefulWidget {
@@ -49,7 +47,8 @@ class _BookServicePageState extends State<BookServicePage> {
     final userModel = ModalRoute.of(context)!.settings.arguments as UserModel;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Book Service'),
+        title: const Text('Book Service'),
+        centerTitle: true,
       ),
       body: Center(
         child: Form(
@@ -319,7 +318,7 @@ class _BookServicePageState extends State<BookServicePage> {
       } catch (error) {
         EasyLoading.dismiss();
         showMsg(context, 'Could not save, Please check your connection');
-        throw error;
+        rethrow;
       }
     }
   }

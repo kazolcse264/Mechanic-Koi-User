@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mechanic_koi/models/book_service_model.dart';
 import 'package:mechanic_koi/utils/constants.dart';
 import 'package:provider/provider.dart';
 
@@ -13,7 +12,7 @@ class TotalExpensesPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final totalExpense = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
-      appBar: AppBar(title: const Text('Total Expenses Page'),),
+      appBar: AppBar(title: const Text('Total Expenses Page'), centerTitle: true,),
       body: Consumer<ServiceProvider>(
         builder: (context, provider, child) => Column(
           children: [
@@ -35,7 +34,7 @@ class TotalExpensesPage extends StatelessWidget {
                       serviceProvider: provider,
                     );
                   }
-                  return Text('');
+                  return const Text('');
                 },
               ),
             ),

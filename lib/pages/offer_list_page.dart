@@ -12,7 +12,7 @@ class OfferListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('OfferListPage'),),
+      appBar: AppBar(title: const Text('OfferListPage'), centerTitle: true,),
       body: Consumer<ServiceProvider>(
         builder: (context, provider, child) => ListView.builder(
           itemCount: provider.offerModelList.length,

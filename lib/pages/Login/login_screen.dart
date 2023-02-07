@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -13,9 +13,8 @@ import '../../utils/background.dart';
 import '../../utils/constants.dart';
 
 import '../../utils/helper_functions.dart';
+import '../../utils/widget_function.dart';
 import '../Signup/signup_screen.dart';
-
-import '../bottom_nav_bar_page.dart';
 import 'components/login_screen_top_image.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -125,22 +124,25 @@ class _LoginScreenState extends State<LoginScreen> {
                             right: 8.0,
                           ),
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              Row(
-                                children: [
-                                  Checkbox(
-                                      value: rememberPassword,
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          rememberPassword = value!;
-                                        });
-                                      }),
-                                  const Text('Remember me '),
-                                ],
-                              ),
                               TextButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  showSingleTextFieldInputDialog(
+                                    context: context,
+                                    title: 'Enter your Email Address which you provide before',
+                                    onSubmit: (value) {
+                                      try{
+                                        EasyLoading.show();
+                                        AuthService.resetPassword(value);
+                                        EasyLoading.dismiss();
+                                      }catch(error){
+                                        EasyLoading.dismiss();
+                                        showMsg(context, error.toString());
+                                      }
+                                    },
+                                  );
+                                },
                                 child: const Text('Forgot Password?'),
                               ),
                             ],
@@ -219,7 +221,7 @@ class _LoginScreenState extends State<LoginScreen> {
             if(mounted)Navigator.pushReplacementNamed(context, LauncherPage.routeName);
           }else{
             EasyLoading.dismiss();
-            showMsg(context, 'Please sign up first');
+            if(mounted)showMsg(context, 'Please sign up first');
           }
         }
         EasyLoading.dismiss();

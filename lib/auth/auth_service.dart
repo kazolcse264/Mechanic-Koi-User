@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:mechanic_koi/utils/helper_functions.dart';
 
 
 class AuthService {
@@ -45,4 +46,13 @@ class AuthService {
   static Future<void> deleteAccount() {
     return _auth.currentUser!.delete();
   }
+
+  static Future<void> resetPassword(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } catch (e) {
+      print("Error sending password reset email: $e");
+    }
+  }
+
 }

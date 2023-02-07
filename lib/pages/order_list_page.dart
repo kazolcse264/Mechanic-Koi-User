@@ -13,6 +13,7 @@ class OrderListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Order list Page'),
+        centerTitle: true,
       ),
       body: Consumer<ServiceProvider>(
         builder: (context, provider, child) => Column(

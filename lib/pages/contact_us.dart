@@ -8,8 +8,8 @@ class ContactUsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Contact Us Page'),),
-      body: Container(
+      appBar: AppBar(title: const Text('Contact Us Page'), centerTitle: true,),
+      body: SizedBox(
         width: double.infinity,
         child: ListWheelScrollView(
           itemExtent: 250,
@@ -19,7 +19,7 @@ class ContactUsPage extends StatelessWidget {
               .map((imagePath) => Padding(
             padding: const EdgeInsets.symmetric(
                 horizontal: 4.0, vertical: 8.0),
-            child: Container(
+            child: SizedBox(
               //height: 50,
               width: double.infinity,
               child: Card(
